@@ -1,0 +1,34 @@
+<controls>
+    <SliderInt_Depth_Thresh>
+        <name>Depth Thresh</name>
+        <value>10</value>
+    </SliderInt_Depth_Thresh>
+    <SliderInt_Range>
+        <name>Range</name>
+        <value>80</value>
+    </SliderInt_Range>
+    <SliderInt_minContArea>
+        <name>minContArea</name>
+        <value>365</value>
+    </SliderInt_minContArea>
+    <SliderInt_maxContArea>
+        <name>maxContArea</name>
+        <value>1370</value>
+    </SliderInt_maxContArea>
+    <Toggle_Configured>
+        <name>Configured</name>
+        <value>1</value>
+    </Toggle_Configured>
+    <Toggle_Save_Background>
+        <name>Save Background</name>
+        <value>0</value>
+    </Toggle_Save_Background>
+    <SliderInt_Persistence>
+        <name>Persistence</name>
+        <value>41</value>
+    </SliderInt_Persistence>
+    <SliderFloat_maxDist>
+        <name>maxDist</name>
+        <value>40.079998016</value>
+    </SliderFloat_maxDist>
+</controls>
