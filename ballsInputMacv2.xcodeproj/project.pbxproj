@@ -395,6 +395,7 @@
 		F7CD2B521A5CC0CC001CEFAA /* corners.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corners.h; sourceTree = "<group>"; };
 		F7CD2B531A5CC0CC001CEFAA /* intercept.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = intercept.cpp; sourceTree = "<group>"; };
 		F7CD2B541A5CC0CC001CEFAA /* intercept.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intercept.h; sourceTree = "<group>"; };
+		F7CD2B611A5DF58C001CEFAA /* BallTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BallTracker.h; sourceTree = "<group>"; };
 		F7FBC56859535E597B24BB91 /* NetworkingUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NetworkingUtils.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h; sourceTree = SOURCE_ROOT; };
 		F886EBA3F8F05C7F74633933 /* devmem2d.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = devmem2d.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/devmem2d.hpp; sourceTree = SOURCE_ROOT; };
 		F9D0AEE8FC68BFD579485480 /* ofxSimpleGuiValueControl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSimpleGuiValueControl.cpp; path = ../../../addons/ofxSimpleGuiToo/src/ofxSimpleGuiValueControl.cpp; sourceTree = SOURCE_ROOT; };
@@ -1151,6 +1152,7 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ballsInput.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ballsInput.h */,
+				F7CD2B611A5DF58C001CEFAA /* BallTracker.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

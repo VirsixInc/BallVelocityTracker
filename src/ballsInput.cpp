@@ -47,7 +47,10 @@ void testApp::setup() {
     gui.addToggle("Save Background", saveBk);
     gui.addSlider("Persistence", persistence, 0, 100);
     gui.addSlider("maxDist", maxDistance, 0.1, 200.0);
+    gui.addSlider("velSmoothRate", velSmoothRate, 0.0, 1.0);
     gui.loadFromXML();
+    
+    ballTracker.init(&persistence, &maxDistance, &minContArea, &maxContArea, &velSmoothRate);
 }
 
 //--------------------------------------------------------------
@@ -76,40 +79,11 @@ void testApp::update() {
 
                 
             case Main:
-                contourFinder.getTracker().setPersistence(persistence);
-                contourFinder.getTracker().setMaximumDistance(maxDistance);
-                contourFinder.setFindHoles(true);
-                contourFinder.setMinArea(minContArea);
-                contourFinder.setMaxArea(maxContArea);
-                contourFinder.setUseTargetColor(false);
-
                 if(configured) {
                     ThresholdImages();
+                    rects.clear();
+                    rects = ballTracker.track(grayImage);
                     
-                    contourFinder.findContours(grayImage);
-                    tracker.track(contourFinder.getBoundingRects());
-                    if(contourFinder.size() > 0) {
-                        for(int i = 0; i < contourFinder.size(); i++) {
-                            int label = contourFinder.getLabel(i);
-                            int age = contourFinder.getTracker().getAge(label);
-                            const cv::Rect& current = contourFinder.getTracker().getSmoothed(label);
-                            cv::Vec2f curPos(current.x + current.width / 2, current.y + current.height / 2);
-                            
-                            tracker.getFollowers()[i].UpdateVelocity(ofxCv::toOf(contourFinder.getTracker().getVelocity(i))); // Labels and followers *should* match up
-                            
-                            string notice = "curLabels: " + ofToString(contourFinder.getTracker().getNewLabels().size())
-                                + " |newLabels: " + ofToString(contourFinder.getTracker().getNewLabels().size())
-                                + " |prevLabels: " + ofToString(contourFinder.getTracker().getPreviousLabels().size())
-                                + " |deadLabels: " + ofToString(contourFinder.getTracker().getDeadLabels().size())
-                                + " |label: " + ofToString(label)
-                                + " |age: " + ofToString(age)
-                                + " |pos: " + ofToString(ofxCv::toOf(curPos))
-                                + " |vel: " + ofToString(tracker.getFollowers()[i].velocity);
-//                                + " |vel: " + ofToString(ofxCv::toOf(contourFinder.getTracker().getVelocity(i)));
-
-                            ofLogNotice(ofToString(notice));
-                        }
-                    }
                 }
                 break;
         }
@@ -150,10 +124,9 @@ void testApp::ConfigureScreen() {
     timer++;
     contourFinder.setTargetColor(ofColor::white);
     contourFinder.setUseTargetColor(true);
-    contourFinder.setMinArea(100); // TODO tweak. Seems good tho.
-    contourFinder.setThreshold(100); // TODO tweak. Seems good tho.
+    contourFinder.setMinArea(200); // TODO tweak. Seems good tho.
+    contourFinder.setThreshold(80); // TODO tweak. Seems good tho.
     contourFinder.resetMaxArea();
-    contourFinder.getTracker().setPersistence(0);
     contourFinder.findContours(warpedColImg);
     
     //TODO cant just give up like this.
@@ -211,18 +184,10 @@ void testApp::draw() {
     warpedColImg.draw(camWidth*2, 0, camWidth, camHeight);
     grayImageDiff.draw(camWidth*2, camHeight, camWidth, camHeight);
     
-    if(state == Main) {
-        ofSetColor(ofColor::teal);
-        for(int i = 0; i < contourFinder.size(); i++) {
-            int label = contourFinder.getLabel(i);
-//            cv::Vec2f vel = contourFinder.getTracker().getVelocity(i);
-            if(tracker.getFollowers().size() > 0) {
-                cv::Vec2f vel = ofxCv::toCv(tracker.getFollowers()[i].velocity);
-                const cv::Rect& current = contourFinder.getTracker().getCurrent(label);
-                cv::Vec2f pos(current.x + current.width / 2, current.y + current.height / 2);
-                ofLine(ofxCv::toOf(pos), ofxCv::toOf(pos + (vel * 10)));
-            }
-        }
+    ballTracker.draw();
+    
+    for(int i = 0; i < rects.size(); i++) {
+        ofRect(rects[0]);
     }
     
     if(configured){
@@ -313,13 +278,5 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-//    
-//    selectedCorner = -1;
-//    if(selectedCorner == -1 && idSet){
-//        idSet = false;
-//        colorJustAcquired = warpedColImg.getPixelsRef().getColor(x, y);
-//        ofLogNotice(ofToString(x) + "  " + ofToString(y));
-//        players[id].ballColor = colorJustAcquired;
-//        colorContourFinder.setTargetColor(players[id].ballColor,ofxCv::TRACK_COLOR_HSV);
-//    }
+
 }

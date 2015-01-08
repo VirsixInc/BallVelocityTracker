@@ -25,10 +25,14 @@
     </Toggle_Save_Background>
     <SliderInt_Persistence>
         <name>Persistence</name>
-        <value>41</value>
+        <value>22</value>
     </SliderInt_Persistence>
     <SliderFloat_maxDist>
         <name>maxDist</name>
-        <value>40.079998016</value>
+        <value>48.875595093</value>
     </SliderFloat_maxDist>
+    <SliderFloat_velSmoothRate>
+        <name>velSmoothRate</name>
+        <value>0.949999988</value>
+    </SliderFloat_velSmoothRate>
 </controls>

@@ -6,28 +6,44 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>DBDBDB5B-D24F-451C-B1EE-62BBC6E7D5D3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ballsInputMacv2</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>328B2D9D97956D43F1C477558678A6865720047A</key>
 		<string>https://github.com/memo/ofxMSAInteractiveObject.git</string>
+		<key>342558D8DAF2B8018FC934AFAF0977AE4DEE7035</key>
+		<string>https://github.com/VirsixInc/BallVelocityTracker.git</string>
 		<key>ADACB6BAEA67271B9A2BF47167EA909FD6B0CF40</key>
 		<string>https://github.com/memo/ofxSimpleGuiToo.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ballsInputMacv2.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>328B2D9D97956D43F1C477558678A6865720047A</key>
-		<string>ofxMSAInteractiveObject/</string>
+		<string>../../../addons/ofxMSAInteractiveObject</string>
+		<key>342558D8DAF2B8018FC934AFAF0977AE4DEE7035</key>
+		<string>../..</string>
 		<key>ADACB6BAEA67271B9A2BF47167EA909FD6B0CF40</key>
-		<string>ofxSimpleGuiToo/</string>
+		<string>../../../addons/ofxSimpleGuiToo</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/memo/ofxSimpleGuiToo.git</string>
+	<string>https://github.com/VirsixInc/BallVelocityTracker.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>ADACB6BAEA67271B9A2BF47167EA909FD6B0CF40</string>
+	<string>342558D8DAF2B8018FC934AFAF0977AE4DEE7035</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>342558D8DAF2B8018FC934AFAF0977AE4DEE7035</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BallVelocityTracker</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
