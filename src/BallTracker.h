@@ -35,13 +35,12 @@ public:
         velSmoothRate = p_velSmoothRate;
     }
     
-    vector<ofRectangle> track(ofxCvGrayscaleImage gray) {
+    void track(ofxCvGrayscaleImage gray, vector<ofRectangle>* rects, vector<int>* labels) {
         ofxCv::RectTracker& tracker = contourFinder.getTracker();
-        vector<ofRectangle> rects;
         
         if(persistence == NULL || maxDistance == NULL || minContArea == NULL || maxContArea == NULL) {
             ofLogNotice("Must call init!");
-            return rects;
+            return;
         }
         
         tracker.setPersistence(*persistence);
@@ -62,10 +61,9 @@ public:
         for(int i = 0; i < contourFinder.size(); i++) {
             int label = contourFinder.getLabel(i);
             cv::Rect_<int> rect = tracker.getCurrent(label);
-            rects.push_back(ofxCv::toOf(rect));
+            rects->push_back(ofxCv::toOf(rect));
+            labels->push_back(label);
         }
-        
-        return rects;
     }
     
     void draw() {
@@ -117,7 +115,7 @@ private:
             
             ofVec2f curPos = ofxCv::toOf(current).getCenter();
             
-            string notice = "curLabels: " + ofToString(tracker.getNewLabels().size())
+            string notice = "curLabels: " + ofToString(tracker.getCurrentLabels().size())
             + " newLabels: " + ofToString(tracker.getNewLabels().size())
             + "|prevLabels: " + ofToString(tracker.getPreviousLabels().size())
             + "|deadLabels: " + ofToString(tracker.getDeadLabels().size())
