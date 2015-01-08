@@ -1,5 +1,20 @@
+/*
+ Utilizes OfxCv::ContourFinder and its RectTracker to track shapes across a grayscaled image.
+ 
+ Run init(...) and pass it pointers to variables (meant for OfxGui sliders) in setup.
+ 
+ Call track(...) in your update loop and pass it a grayscale image. It will return a vector or ofRectangles.
+ 
+ Call Draw() if you want to see a visualization of the contour and velocity.
+ 
+ set LOGINFO to 0 if you dont want logs
+ 
+ */
+
 #ifndef _Ball_Tracker_H_
 #define _Ball_Tracker_H_
+
+#define LOGINFO 1
 
 #include "ofMain.h"
 #include "ofxOpenCv.h"
@@ -40,8 +55,9 @@ public:
         
         updateVelocity();
         
+#if LOGINFO
         logInfo();
-        
+#endif
         
         for(int i = 0; i < contourFinder.size(); i++) {
             int label = contourFinder.getLabel(i);
